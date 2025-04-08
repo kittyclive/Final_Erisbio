@@ -23,6 +23,8 @@ Once you download the expression_data.zip file, save it to tcga/data.  If you ha
 Alternatively, we have put together a pipeline to pull the data although we would strongly discourage running this, as it uses the gdc client which limits download rates and our testing was limited to the mac distribution of the gdc-client tool.  If you do decide to use this tool it should take around 20-30 hours to complete.  At which point you will have to zip the file and name it `expression_data.zip` and save it to tcga/data to be used within our notebooks.  To run it on mac, go to the tcga folder and run the following: 
  - `python download_data.py`
 
+The first time you run this, your firewall/malware protection may block it.  If this occurs, close out of your terminal and stop it from running.  To allow this to run go to your system settings and open the privacy & security tab.  Scroll down to security where it says `"gdc-client-mac" was blocked to protect your Mac` and click Allow Anyway.  Now rerun the command, click open anyway, and it should work.
+
 If you want to run it on ubuntu we have also downloaded the ubuntu distribution and to use it you will need to edit the `download_data.sh` file -- You would need to replace 
  - `echo "$@" | xargs -n 1 -P $PARALLEL_DOWNLOADS ./gdc_distributions/gdc-client-mac download -d ./data` with
  - `echo "$@" | xargs -n 1 -P $PARALLEL_DOWNLOADS ./gdc_distributions/gdc-client-ubuntu download -d ./data`
@@ -31,17 +33,29 @@ Now, navigate to the parent directory and run the following:
  - `python download_data.py`
 
 ## Step 2: Data Filtering
-This process is completed in notebook `00_data_filtering.ipynb`
+This processing is completed in notebook `00_data_filtering.ipynb`
+ - You shouldn't have to adjust anything assuming you have the zipped data stored in the correct location (as explained in step 1)
+ - Select the eris conda environment as the kernel for the notebook and run all cells
+ - This notebook takes in expression_data.zip, unzips it, reads the dataframe within, filters for the genes of interest as defined in genes.json, scores the different markers, and then saves the resulting dataframe as `tcga/data/processed_data.tsv`
 
 
-Step 3: Creating Demogrphic Distribution Figure
+## Step 3: Creating Distribution Figure
+This figure generation is completed in notebook `01_distribution.ipynb`
+
 This figure shows a distribution of the number of patients included in our study across all cancer types. If you want the files to be in a specific folder then you can use the second cell to choose a file name and destination. 
+
 Run all of the cells without customizing to save "Demographics" within the "Figures" folder. 
 
-Step 4: Creating Figure 1: a plot of the distribution of individual trait scores and an overall score.
-The figure shows a distribution of scores across chosen traits and the overall score. Use the first cell to customize the file names and locations. 
-Run all cells without updating them to save "Figure 1" to the "Figures" folder. 
+## Step 4: Creating Figure 1
+This figure generation is completed in notebook `02_figure_1.ipynb`
 
-Step 5: Creating Figure 2: a plot that shows the percent of patients that would be likely to respond very well, and just well to ASMase therapy. 
-The figure displays the percent of patients that score above the 50th percentile across all cancer types with a grey bar. Patients who score above the 80th percentile across all cancer types are contained within the blue bar. Use the second cell of the notebook to customize file name and location. 
-Run all cells without updating them to save "Figure 2"  to the "Figures" folder. 
+The figure shows a distribution of scores across chosen traits and the overall score. Use the first cell to customize the file names and locations. 
+
+Run all cells without updating them to save "figure_1.png" to the "figures" folder. 
+
+## Step 5: Creating Figure 2
+This figure generation is completed in notebook `03_figure_2.ipynb`
+
+Figure 2 is a plot that shows the percent of patients that would be likely to respond very well, and just well to ASMase therapy. The figure displays the percent of patients that score above the 50th percentile across all cancer types with a grey bar. Patients who score above the 80th percentile across all cancer types are contained within the blue bar. Use the second cell of the notebook to customize file name and location. 
+
+Run all cells without updating them to save "figure_2.png"  to the "figures" folder. 
