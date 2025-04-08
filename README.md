@@ -2,10 +2,16 @@
 To get started using this repo you will need to set up a conda environment with the necessary packages.  To do this, navigate to this repo's parent directory and run the following in order:
 
  - `conda create -n eris python -y`
- - `conda activate eris `
+ - `conda activate eris`
  - `pip install cptac`
- - If 'pip install cptac' fails try: `conda install -c bioconda cptac`
  - `conda install pandas matplotlib seaborn requests ipykernel scikit-learn scipy -y`
+
+If you encounter problems creating/employing the environment with the process above, try the following:
+ - `conda remove --name eris --all`
+ - `conda create -n eris python=3.12 -y`
+ - `conda activate eris`
+ - `conda install pandas matplotlib seaborn requests ipykernel scikit-learn scipy -y`
+ - `pip install cptac`
 
 If you are unfamiliar with miniconda and do not have it installed, reference their documentation here: https://www.anaconda.com/docs/getting-started/miniconda/install
 
@@ -64,14 +70,17 @@ Run all cells without updating them to save "figure_2.png"  to the "figures" fol
 
 # CPTAC
 
-## Step 1: Acquire/Process
+## Step 1: Acquire/Process Data
 In `00_data_filtering.ipynb`, run each cell sequentially. This file utilizes the `cptac` package  (https://github.com/PayneLab/cptac) to download and process proteomics and transcriptomics data from the National Cancer Institute's CPTAC program. Some cells may require a few minutes to run. Ultimately, this file will output two files (`proteomics_data.tsv` and `transcriptomics_data.tsv`) to the `/data` folder to be used for downstream analysis and figure generation.
 
 ## Step 2: Distribution
 In `01_distribution.ipynb`, run each cell sequentially. This file will save two figures (`distribution_proteomics.png` and `distribution_transcriptomics.png`) in the `/figures` folder.
+These figures show the distribution of patients across all cancer types for both the proteomics and transcriptomics data respectively.
 
 ## Step 3: Figure 1
 In `02_figure_1.ipynb`, run each cell sequentially. This file will save two figures (`figure_1_proteomics.png` and `figure_1_transcriptomics.png`) in the `/figures` folder.
+These figures show the distribution of scores across chosen traits as well as the overall score.
 
 ## Step 4: Figure 2
 In `03_figure_2.ipynb`, run each cell sequentially. This file will save two figures (`figure_2_proteomics.png` and `figure_2_transcriptomics.png`) in the `/figures` folder.
+These figures show the percent of candidates acrosss cancer types. They display the percent of patients that score above the 50th percentile across all cancer types with a grey bar. Patients who score above the 80th percentile across all cancer types are contained within the blue bar.
