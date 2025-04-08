@@ -4,6 +4,7 @@ To get started using this repo you will need to set up a conda environment with 
  - `conda create -n eris python -y`
  - `conda activate eris `
  - `pip install cptac`
+ - If 'pip install cptac' fails try: `conda install -c bioconda cptac`
  - `conda install pandas matplotlib seaborn requests ipykernel scikit-learn scipy -y`
 
 If you are unfamiliar with miniconda and do not have it installed, reference their documentation here: https://www.anaconda.com/docs/getting-started/miniconda/install
