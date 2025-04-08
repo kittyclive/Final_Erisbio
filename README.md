@@ -1,9 +1,10 @@
 # Setup
-To get started using this repo you will need to use our yaml file to create a conda environment with the necessary packages.  To do this, navigate to this repo's parent directory and run the following:
+To get started using this repo you will need to set up a conda environment with the necessary packages.  To do this, navigate to this repo's parent directory and run the following in order:
 
- - `conda env create -f environment.yml`
-
+ - `conda create -n eris python -y`
  - `conda activate eris `
+ - `pip install cptac`
+ - `conda install pandas matplotlib seaborn requests ipykernel scikit-learn scipy -y`
 
 If you are unfamiliar with miniconda and do not have it installed, reference their documentation here: https://www.anaconda.com/docs/getting-started/miniconda/install
 
