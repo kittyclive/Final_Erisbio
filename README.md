@@ -58,4 +58,18 @@ This figure generation is completed in notebook `03_figure_2.ipynb`
 
 Figure 2 is a plot that shows the percent of patients that would be likely to respond very well, and just well to ASMase therapy. The figure displays the percent of patients that score above the 50th percentile across all cancer types with a grey bar. Patients who score above the 80th percentile across all cancer types are contained within the blue bar. Use the second cell of the notebook to customize file name and location. 
 
-Run all cells without updating them to save "figure_2.png"  to the "figures" folder. 
+Run all cells without updating them to save "figure_2.png"  to the "figures" folder.
+
+# CPTAC
+
+## Step 1: Acquire/Process
+In `00_data_filtering.ipynb`, run each cell sequentially. This file utilizes the `cptac` package  (https://github.com/PayneLab/cptac) to download and process proteomics and transcriptomics data from the National Cancer Institute's CPTAC program. Some cells may require a few minutes to run. Ultimately, this file will output two files (`proteomics_data.tsv` and `transcriptomics_data.tsv`) to the `/data` folder to be used for downstream analysis and figure generation.
+
+## Step 2: Distribution
+In `01_distribution.ipynb`, run each cell sequentially. This file will save two figures (`distribution_proteomics.png` and `distribution_transcriptomics.png`) in the `/figures` folder.
+
+## Step 3: Figure 1
+In `02_figure_1.ipynb`, run each cell sequentially. This file will save two figures (`figure_1_proteomics.png` and `figure_1_transcriptomics.png`) in the `/figures` folder.
+
+## Step 4: Figure 2
+In `03_figure_2.ipynb`, run each cell sequentially. This file will save two figures (`figure_2_proteomics.png` and `figure_2_transcriptomics.png`) in the `/figures` folder.
